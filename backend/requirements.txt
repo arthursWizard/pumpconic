@@ -1,0 +1,6 @@
+fastapi[all]
+uvicorn
+sqlalchemy
+databases
+mysql-connector-python
+alembic
