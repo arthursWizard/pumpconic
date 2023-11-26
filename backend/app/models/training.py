@@ -17,6 +17,8 @@ from app.models.enums.weekday import Weekday
 
 
 class BaseInfo(Base):
+    __abstract__ = True
+
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(100), index=True, nullable=False)
     notes = Column(Text, default=None)
