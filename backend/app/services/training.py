@@ -9,6 +9,10 @@ def get_programs(db: Session) -> List[ProgramDto]:
     return db.query(Program).all()
 
 
+def get_program(db: Session, program_id: str) -> ProgramDto | None:
+    return db.query(Program).get(program_id)
+
+
 def get_trainings(db: Session) -> List[TrainingDto]:
     return db.query(Training).all()
 

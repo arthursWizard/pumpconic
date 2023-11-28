@@ -1,26 +1,26 @@
 [
   {
-    "id": 1,
+    "id": "00000000-0000-0000-0000-000000000001",
     "name": "Push",
     "notes": "This is a push day",
     "day_of_the_week": "Monday",
     "order": 1,
-    "program_id": 1
+    "program_id": "00000000-0000-0000-0000-000000000001"
   },
   {
-    "id": 2,
+    "id": "00000000-0000-0000-0000-000000000002",
     "name": "Pull",
     "notes": null,
     "day_of_the_week": null,
     "order": 2,
-    "program_id": 1
+    "program_id": "00000000-0000-0000-0000-000000000001"
   },
   {
-    "id": 3,
+    "id": "00000000-0000-0000-0000-000000000003",
     "name": "Legs",
     "notes": null,
     "day_of_the_week": "Friday",
     "order": 1,
-    "program_id": 2
+    "program_id": "00000000-0000-0000-0000-000000000002"
   }
 ]

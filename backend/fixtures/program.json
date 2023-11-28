@@ -1,13 +1,13 @@
 [
   {
-    "id": 1,
+    "id": "00000000-0000-0000-0000-000000000001",
     "name": "Program 1",
     "notes": null,
     "label": null,
     "create_date": "2023-11-27"
   },
   {
-    "id": 2,
+    "id": "00000000-0000-0000-0000-000000000002",
     "name": "Program 2",
     "notes": "Some info about this program",
     "label": "Periodization",

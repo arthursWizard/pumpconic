@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
     
 class BaseDto(BaseModel):
-    id: int
+    id: str
     name: str
     notes: str | None
 
@@ -26,7 +26,7 @@ class ExerciseDto(BaseDto):
 
 
 class ActivityDto(BaseModel):
-    id: int
+    id: str
     create_date: date
     alternate_exercise: str | None
     sets: str

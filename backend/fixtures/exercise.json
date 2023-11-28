@@ -1,26 +1,26 @@
 [
   {
-    "id": 1,
+    "id": "00000000-0000-0000-0000-000000000001",
     "name": "Bench",
     "notes": null,
     "intensity": "Strength",
     "order": 1,
-    "training_id": 1
+    "training_id": "00000000-0000-0000-0000-000000000001"
   },
   {
-    "id": 2,
+    "id": "00000000-0000-0000-0000-000000000002",
     "name": "Deadlift",
     "notes": "All in",
     "intensity": "Strength",
     "order": 2,
-    "training_id": 1
+    "training_id": "00000000-0000-0000-0000-000000000001"
   },
   {
-    "id": 3,
+    "id": "00000000-0000-0000-0000-000000000003",
     "name": "Delts",
     "notes": null,
     "intensity": "Hypertrophy",
     "order": 3,
-    "training_id": 1
+    "training_id": "00000000-0000-0000-0000-000000000001"
   }
 ]

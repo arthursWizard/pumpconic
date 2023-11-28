@@ -9,7 +9,7 @@ from app.models.training import Activity, Exercise, Program, Training
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_: FastAPI):
     with SessionLocal() as db:
         db.query(Activity).delete()
         db.query(Exercise).delete()
