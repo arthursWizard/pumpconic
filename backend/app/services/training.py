@@ -1,33 +1,20 @@
-from datetime import date
 from typing import List
 
 from sqlalchemy.orm import Session
-from app.models.training import Program
-from app.schemas.training_dtos import ProgramDto, TrainingDto
+from app.models.training import Activity, Exercise, Program, Training
+from app.schemas.training_dtos import ActivityDto, ExerciseDto, ProgramDto, TrainingDto
 
 
-def get_programs_async(db: Session) -> List[ProgramDto]:
-    programs = db.query(Program).all()
-    return programs
-    bla: ProgramDto = ProgramDto(
-        id=1,
-        name="Name",
-        notes="Notes",
-        label="Label",
-        create_date=date.today()
-    )
-    return [
-        bla
-    ]
+def get_programs(db: Session) -> List[ProgramDto]:
+    return db.query(Program).all()
 
 
-def get_trainings_async() -> List[TrainingDto]:
-    bla: TrainingDto = TrainingDto(
-        id=1,
-        name="Training",
-        order=1,
-        notes=None,
-        day_of_the_week=None
-    )
+def get_trainings(db: Session) -> List[TrainingDto]:
+    return db.query(Training).all()
 
-    return [bla]
+def get_exercises(db: Session) -> List[ExerciseDto]:
+    return db.query(Exercise).all()
+
+
+def get_activities(db: Session) -> List[ActivityDto]:
+    return db.query(Activity).all()

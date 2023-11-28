@@ -3,7 +3,7 @@ version: "3.8"
 services:
   app:
     build: ./backend
-    command: alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; uvicorn main:app --host 0.0.0.0 --port 8000 --reload'
     volumes:
       - ./backend:/app
     ports:
@@ -11,7 +11,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=mysql://root:root@127.0.0.1:3306/pumpconic_development
+      - DATABASE_URL=mysql://root:root@db:3306/pumpconic_development
 
   db:
     image: mysql

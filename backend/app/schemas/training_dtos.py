@@ -25,7 +25,7 @@ class ExerciseDto(BaseDto):
     order: int
 
 
-class Activity(BaseModel):
+class ActivityDto(BaseModel):
     id: int
     create_date: date
     alternate_exercise: str | None
