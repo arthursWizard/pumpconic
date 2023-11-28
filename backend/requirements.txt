@@ -1,6 +1,5 @@
-fastapi[all]
+fastapi
 uvicorn
 sqlalchemy
-databases
-mysql-connector-python
+mysqlclient
 alembic

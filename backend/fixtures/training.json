@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Push",
+    "notes": "This is a push day",
+    "day_of_the_week": "Monday",
+    "order": 1,
+    "program_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Pull",
+    "notes": null,
+    "day_of_the_week": null,
+    "order": 2,
+    "program_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Legs",
+    "notes": null,
+    "day_of_the_week": "Friday",
+    "order": 1,
+    "program_id": 2
+  }
+]

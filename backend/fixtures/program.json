@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Program 1",
+    "notes": null,
+    "label": null,
+    "create_date": "2023-11-27"
+  },
+  {
+    "id": 2,
+    "name": "Program 2",
+    "notes": "Some info about this program",
+    "label": "Periodization",
+    "create_date": "2023-11-27"
+  }
+]

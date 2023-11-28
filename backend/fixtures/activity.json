@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "create_date": "2023-11-27",
+    "alternate_exercise": null,
+    "sets": [
+      {
+        "weight": 38,
+        "reps": 4
+      }
+    ],
+    "exercise_id": 1
+  },
+  {
+    "id": 2,
+    "create_date": "2023-11-27",
+    "alternate_exercise": "Flys",
+    "sets": [
+      {
+        "weight": 55,
+        "reps": 4
+      }
+    ],
+    "exercise_id": 2
+  },
+  {
+    "id": 3,
+    "create_date": "2023-11-27",
+    "alternate_exercise": null,
+    "sets": [
+      {
+        "weight": 9,
+        "reps": 8
+      }
+    ],
+    "exercise_id": 3
+  }
+]
