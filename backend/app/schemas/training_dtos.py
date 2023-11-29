@@ -3,30 +3,46 @@ from enum import Enum
 
 from pydantic import BaseModel
 
+
+class IdDto(BaseModel):
+    id: str
+
     
 class BaseDto(BaseModel):
-    id: str
     name: str
     notes: str | None
 
 
-class ProgramDto(BaseDto):
+class ProgramCreateDto(BaseDto):
     label: str | None
+
+
+class ProgramDto(IdDto, ProgramCreateDto):
     create_date: date
 
 
-class TrainingDto(BaseDto):
+class TrainingCreateDto(BaseDto):
     day_of_the_week: Enum | None
     order: int
+
+
+class TrainingDto(IdDto, TrainingCreateDto):
+    pass
     
 
-class ExerciseDto(BaseDto):
+class ExerciseCreateDto(BaseDto):
     intensity: Enum
     order: int
 
 
-class ActivityDto(BaseModel):
-    id: str
-    create_date: date
+class ExerciseDto(IdDto, ExerciseCreateDto):
+    pass
+
+
+class ActivityCreateDto(BaseModel):
     alternate_exercise: str | None
     sets: str
+    
+
+class ActivityDto(IdDto, ActivityCreateDto):
+    create_date: date
