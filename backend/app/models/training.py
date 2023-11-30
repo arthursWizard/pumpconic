@@ -5,7 +5,6 @@ from sqlalchemy import (
     Date,
     Enum,
     ForeignKey,
-    Integer,
     SmallInteger,
     String,
     Text,
@@ -18,10 +17,15 @@ from app.models.enums.weekday import Weekday
 from uuid import uuid4
 
 
-class BaseInfo(Base):
+class AutoId(Base):
     __abstract__ = True
 
-    id = Column(String(36), primary_key=True, index=True, default=uuid4())
+    id = Column(String(36), primary_key=True, index=True, default=uuid4)
+
+
+class BaseInfo(AutoId):
+    __abstract__ = True
+
     name = Column(String(100), index=True, nullable=False)
     notes = Column(Text, default=None)
 
@@ -56,10 +60,9 @@ class Exercise(BaseInfo):
     __table_arg__ = UniqueConstraint("order", "training_id", name="_order_training_uc")
 
 
-class Activity(Base):
+class Activity(AutoId):
     __tablename__ = "activities"
 
-    id = Column(String(36), primary_key=True, index=True, default=uuid4())
     create_date = Column(Date, nullable=False, default=date.today())
     alternate_exercise = Column(String(100), default=None)
     sets = Column(JSON, nullable=False)

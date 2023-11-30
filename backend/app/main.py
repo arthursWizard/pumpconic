@@ -3,6 +3,7 @@ import json
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
 from app.api import training
+from app.api.training import activities, exercises, programs, trainings
 from app.db.session import SessionLocal, get_db
 from app.models.training import Activity, Exercise, Program, Training
 
@@ -44,4 +45,7 @@ async def lifespan(_: FastAPI):
 
 # app = FastAPI()
 app = FastAPI(lifespan=lifespan)
-app.include_router(training.router)
+app.include_router(programs.router)
+app.include_router(trainings.router)
+app.include_router(exercises.router)
+app.include_router(activities.router)

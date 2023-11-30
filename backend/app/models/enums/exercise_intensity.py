@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import StrEnum
 
 
-class ExerciseIntensity(str, Enum):
+class ExerciseIntensity(StrEnum):
     Strength = "Strength"
     Hypertrophy = "Hypertrophy"
     Endurance = "Endurance"
