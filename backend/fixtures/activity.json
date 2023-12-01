@@ -2,7 +2,7 @@
   {
     "id": "00000000-0000-0000-0000-000000000001",
     "create_date": "2023-11-27",
-    "alternate_exercise": null,
+    "alternative_exercise": null,
     "sets": [
       {
         "weight": 38,
@@ -14,7 +14,7 @@
   {
     "id": "00000000-0000-0000-0000-000000000002",
     "create_date": "2023-11-27",
-    "alternate_exercise": "Flys",
+    "alternative_exercise": "Flys",
     "sets": [
       {
         "weight": 55,
@@ -26,7 +26,7 @@
   {
     "id": "00000000-0000-0000-0000-000000000003",
     "create_date": "2023-11-27",
-    "alternate_exercise": null,
+    "alternative_exercise": null,
     "sets": [
       {
         "weight": 9,
