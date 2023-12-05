@@ -1,5 +1,5 @@
-function Homepage() {
-  return <div>Hello World!</div>;
-}
+import Button from '@mui/material/Button';
 
-export default Homepage;
+export default function Homepage() {
+  return <div className="homepage"></div>;
+}
