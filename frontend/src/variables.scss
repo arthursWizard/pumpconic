@@ -1,0 +1,23 @@
+$dark-background: #282424;
+$dark-bg-lighter-5: lighten($dark-background, 5%);
+$dark-bg-lighter-10: lighten($dark-background, 10%);
+$dark-bg-lighter-20: lighten($dark-background, 20%);
+$dark-bg-lighter-30: lighten($dark-background, 30%);
+$dark-bg-tooltip: lighten(#282424, 20%);
+$dark-bg-alpha-4: rgba(#282424, 0.04);
+$dark-bg-alpha-12: rgba(#282424, 0.12);
+
+$light-text: #dcd6d6;
+$light-primary-text: $light-text;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);
+
+$primary: #700505;
+$primary-light: #d4b4b4;
+$primary-dark: #530303;
+
+$secondary: #e08106;
+$secondary-light: #f6d9b4;
+$secondary-dark: #d36403;

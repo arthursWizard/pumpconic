@@ -1,3 +1,13 @@
+@use 'variables' as var;
+
 .header {
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  background-color: var.$dark-bg-lighter-10;
+}
+
+.home {
+  color: var.$light-text !important;
   display: flex;
 }
