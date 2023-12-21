@@ -1,0 +1,13 @@
+.objects-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.filter {
+  width: 15rem;
+}
+
+.table-row:hover {
+  cursor: pointer;
+}

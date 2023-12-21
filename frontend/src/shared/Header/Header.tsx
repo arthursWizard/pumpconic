@@ -1,4 +1,4 @@
-import { Button, Link } from '@mui/material';
+import { Link } from '@mui/material';
 import { Home } from '@mui/icons-material';
 import './Header.scss';
 
