@@ -15,7 +15,7 @@ import TextField from '@mui/material/TextField';
 import { S } from '@mobily/ts-belt';
 import ConfirmationDialog from 'shared/ConfirmationDialog/ConfirmationDialog';
 
-export type RowDef = { id: string; [key: string]: string | number };
+export type RowDef = { id: string; navigation: string; [key: string]: string | number };
 
 type ColumnDefBase<T, K extends keyof T> = {
   name: string;
@@ -24,12 +24,7 @@ type ColumnDefBase<T, K extends keyof T> = {
 
 export type ColumnDef<T> = { [K in keyof T]-?: ColumnDefBase<T, K> }[keyof T];
 
-type EventType = 'edit' | 'delete';
-
-function navigate(route: string): void {
-  // TODO: Implement navigation
-  console.log(route);
-}
+export type EventType = 'navigate' | 'edit' | 'delete';
 
 interface RowItemProps<T> {
   row: T;
@@ -54,7 +49,7 @@ function RowItem<T extends RowDef>({ row, columns, hasOptionsMenu, onAction }: R
   };
 
   return (
-    <TableRow className="table-row" onClick={() => navigate(row.id)} hover>
+    <TableRow className="table-row" onClick={() => onAction?.(row.id, 'navigate')} hover>
       {columns.map((c) => (
         <TableCell key={c.name}>{row[c.key]}</TableCell>
       ))}
@@ -82,9 +77,15 @@ interface ObjectTableProps<T> {
   rows: T[];
   columns: ColumnDef<T>[];
   hasOptionsMenu?: boolean;
+  onAction?: (id: string, eventType: EventType) => void;
 }
 
-export default function ObjectsTable<T extends RowDef>({ rows, columns, hasOptionsMenu }: ObjectTableProps<T>) {
+export default function ObjectsTable<T extends RowDef>({
+  rows,
+  columns,
+  hasOptionsMenu,
+  onAction,
+}: ObjectTableProps<T>) {
   const [editDialog, setEditDialog] = useState<{ open: boolean; id: string | null }>({
     open: false,
     id: null,
@@ -96,23 +97,30 @@ export default function ObjectsTable<T extends RowDef>({ rows, columns, hasOptio
   const [filter, setFilter] = useState<string>('');
 
   const handleOnAction = (id: string, eventType: EventType) => {
-    if (eventType === 'edit') {
-      setEditDialog({ open: true, id });
-    } else if (eventType === 'delete') {
-      setDeleteDialog({ open: true, id });
+    switch (eventType) {
+      case 'navigate':
+        onAction?.(id, eventType);
+        break;
+      case 'edit':
+        setEditDialog({ open: true, id });
+        break;
+      case 'delete':
+        setDeleteDialog({ open: true, id });
+        break;
     }
   };
 
+  // TODO: Implement edit functionality
   const handleEdit = () => {
-    // TODO: Implement edit
-    console.log('edit', editDialog.id);
+    if (editDialog.id != null && onAction != null) {
+      onAction(editDialog.id, 'edit');
+    }
     setEditDialog({ open: false, id: null });
   };
 
   const handleDelete = (confirmation: boolean) => {
-    if (confirmation) {
-      // TODO: Implement delete
-      console.log('delete', deleteDialog.id);
+    if (confirmation && deleteDialog.id != null && onAction != null) {
+      onAction(deleteDialog.id, 'delete');
     }
     setDeleteDialog({ open: false, id: null });
   };
@@ -126,8 +134,8 @@ export default function ObjectsTable<T extends RowDef>({ rows, columns, hasOptio
         value={filter}
         onChange={(event) => setFilter(event.target.value)}
       ></TextField>
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer className="table" component={Paper}>
+        <Table stickyHeader>
           <TableHead>
             <TableRow>
               {columns.map((c) => (

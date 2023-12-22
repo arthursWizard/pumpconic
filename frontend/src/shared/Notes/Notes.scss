@@ -1,0 +1,16 @@
+@use 'variables' as var;
+
+.notes {
+  border: 2px solid var.$secondary;
+  border-radius: 4px;
+  background-color: rgba(var.$secondary, 0.3);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.notes-title {
+  font-weight: bolder;
+  font-size: 0.7rem;
+}
