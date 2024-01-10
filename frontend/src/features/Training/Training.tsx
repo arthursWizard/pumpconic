@@ -18,10 +18,6 @@ const columns: ColumnDef<Bla>[] = [
     key: 'name',
   },
   {
-    name: 'CREATE DATE',
-    key: 'create_date',
-  },
-  {
     name: 'LABEL',
     key: 'label',
   },

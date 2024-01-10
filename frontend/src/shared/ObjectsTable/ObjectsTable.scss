@@ -6,7 +6,6 @@
 }
 
 .table {
-  overflow-x: auto;
   max-height: 100%;
 }
 
@@ -16,4 +15,13 @@
 
 .table-row:hover {
   cursor: pointer;
+}
+
+.drawer {
+  margin-left: 1rem;
+}
+
+.action-key-container {
+  display: flex;
+  justify-content: space-between;
 }

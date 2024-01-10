@@ -1,5 +1,9 @@
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
 import { ReactNode } from 'react';
 import './Notes.scss';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import AccordionDetails from '@mui/material/AccordionDetails';
 
 interface NotesProps {
   children: ReactNode;
@@ -7,9 +11,11 @@ interface NotesProps {
 
 export default function Notes({ children }: NotesProps) {
   return (
-    <div className="notes">
-      <span className="notes-title">NOTES</span>
-      {children}
-    </div>
+    <Accordion className="notes">
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <span className="notes-title">NOTES</span>
+      </AccordionSummary>
+      <AccordionDetails>{children}</AccordionDetails>
+    </Accordion>
   );
 }

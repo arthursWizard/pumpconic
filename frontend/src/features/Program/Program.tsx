@@ -18,10 +18,6 @@ const columns: ColumnDef<Bla>[] = [
     key: 'name',
   },
   {
-    name: 'CREATE DATE',
-    key: 'create_date',
-  },
-  {
     name: 'LABEL',
     key: 'label',
   },
@@ -40,9 +36,9 @@ const rows = [
   { id: 'a', navigation: '/training/1', name: 'training 5', create_date: '20.12.2023', label: 'bla' },
   { id: 'b', navigation: '/training/1', name: 'training 5', create_date: '20.12.2023', label: 'bla' },
   { id: 'c', navigation: '/training/1', name: 'training 5', create_date: '20.12.2023', label: 'bla' },
-  { id: 'd', navigation: '/training/1', name: 'training 5', create_date: '20.12.2023', label: 'bla' },
-  { id: 'e', navigation: '/training/1', name: 'training 5', create_date: '20.12.2023', label: 'bla' },
-  { id: 'f', navigation: '/training/1', name: 'training 5', create_date: '20.12.2023', label: 'bla' },
+  { id: 'd', navigation: '/training/1', name: 'training 7', create_date: '20.12.2023', label: 'bla' },
+  { id: 'e', navigation: '/training/1', name: 'training 8', create_date: '20.12.2023', label: 'bla' },
+  { id: 'f', navigation: '/training/1', name: 'training 9', create_date: '20.12.2023', label: 'bla' },
   { id: 'g', navigation: '/training/1', name: 'training', create_date: '20.12.2023', label: 'bla' },
 ];
 export default function Program() {

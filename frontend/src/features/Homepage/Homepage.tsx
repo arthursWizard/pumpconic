@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Base from 'shared/Base/Base';
 import ObjectsTable, { ColumnDef, EventType } from 'shared/ObjectsTable/ObjectsTable';
+import ProgramFormDialog from 'shared/ProgramFormDialog/ProgramFormDialog';
 
 interface Bla {
   id: string;
@@ -16,17 +17,19 @@ const columns: ColumnDef<Bla>[] = [
     key: 'name',
   },
   {
-    name: 'CREATE DATE',
-    key: 'create_date',
-  },
-  {
     name: 'LABEL',
     key: 'label',
   },
 ];
 
 const rows = [
-  { id: '1', navigation: '/program/1', name: 'program 1', create_date: '20.12.2023', label: 'bla' },
+  {
+    id: '1',
+    navigation: '/program/1',
+    name: 'normal word length and a little bit more',
+    create_date: '20.12.2023',
+    label: 'bla',
+  },
   { id: '2', navigation: '/program/1', name: 'program 2', create_date: '20.12.2023', label: 'bla' },
   { id: '3', navigation: '/program/1', name: 'program 3', create_date: '20.12.2023', label: 'bla' },
   { id: '4', navigation: '/program/1', name: 'program 4', create_date: '20.12.2023', label: 'bla' },
@@ -61,7 +64,13 @@ export default function Homepage() {
   };
   return (
     <Base title="Programs">
-      <ObjectsTable columns={columns} rows={rows} hasOptionsMenu={true} onAction={handleOnAction} />
+      <ObjectsTable
+        columns={columns}
+        rows={rows}
+        hasOptionsMenu={true}
+        EditFormDialog={ProgramFormDialog}
+        onAction={handleOnAction}
+      />
     </Base>
   );
 }

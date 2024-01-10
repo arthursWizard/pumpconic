@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './ObjectsTable.scss';
-import { useState } from 'react';
+import { ComponentClass, ComponentType, ElementType, Fragment, ReactNode, useState } from 'react';
 import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -14,8 +14,12 @@ import TableBody from '@mui/material/TableBody';
 import TextField from '@mui/material/TextField';
 import { S } from '@mobily/ts-belt';
 import ConfirmationDialog from 'shared/ConfirmationDialog/ConfirmationDialog';
+import FilterDrawer from 'shared/FilterDrawer/FilterDrawer';
+import Button from '@mui/material/Button';
+import BaseDialog, { DialogActionsProps } from 'shared/BaseDialog/BaseDialog';
+import { UpdateDialogProps } from 'types/UpdateDialogProps';
 
-export type RowDef = { id: string; navigation: string; [key: string]: string | number };
+export type RowDef = { id: string; navigation: string;[key: string]: string | number };
 
 type ColumnDefBase<T, K extends keyof T> = {
   name: string;
@@ -77,6 +81,7 @@ interface ObjectTableProps<T> {
   rows: T[];
   columns: ColumnDef<T>[];
   hasOptionsMenu?: boolean;
+  EditFormDialog?: ComponentType<UpdateDialogProps>;
   onAction?: (id: string, eventType: EventType) => void;
 }
 
@@ -84,6 +89,7 @@ export default function ObjectsTable<T extends RowDef>({
   rows,
   columns,
   hasOptionsMenu,
+  EditFormDialog,
   onAction,
 }: ObjectTableProps<T>) {
   const [editDialog, setEditDialog] = useState<{ open: boolean; id: string | null }>({
@@ -110,9 +116,9 @@ export default function ObjectsTable<T extends RowDef>({
     }
   };
 
-  // TODO: Implement edit functionality
-  const handleEdit = () => {
-    if (editDialog.id != null && onAction != null) {
+  const handleEdit = (confirmation: boolean) => {
+    // TODO: Handle case when adding and id is null
+    if (confirmation && editDialog.id != null && onAction != null) {
       onAction(editDialog.id, 'edit');
     }
     setEditDialog({ open: false, id: null });
@@ -125,15 +131,26 @@ export default function ObjectsTable<T extends RowDef>({
     setDeleteDialog({ open: false, id: null });
   };
 
+  const handleAddNew = () => {
+    setEditDialog({ open: true, id: null });
+  };
+
   return (
     <div className="objects-table">
-      <TextField
-        className="filter"
-        label="Filter"
-        variant="standard"
-        value={filter}
-        onChange={(event) => setFilter(event.target.value)}
-      ></TextField>
+      <div className="action-key-container">
+        <FilterDrawer className="drawer">
+          <TextField
+            className="filter"
+            label="Name/Label"
+            variant="standard"
+            value={filter}
+            onChange={(event) => setFilter(event.target.value)}
+          ></TextField>
+        </FilterDrawer>
+        <Button variant="contained" onClick={() => handleAddNew()}>
+          New
+        </Button>
+      </div>
       <TableContainer className="table" component={Paper}>
         <Table stickyHeader>
           <TableHead>
@@ -159,11 +176,12 @@ export default function ObjectsTable<T extends RowDef>({
           </TableBody>
         </Table>
       </TableContainer>
+      {EditFormDialog != null && <EditFormDialog id={editDialog.id} open={editDialog.open} onClose={handleEdit} />}
       <ConfirmationDialog
         open={deleteDialog.open}
         message="Are you sure you want to delete this item?"
         onClose={handleDelete}
-      ></ConfirmationDialog>
+      />
     </div>
   );
 }
