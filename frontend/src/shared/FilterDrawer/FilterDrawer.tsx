@@ -2,7 +2,7 @@ import IconButton from '@mui/material/IconButton';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Drawer from '@mui/material/Drawer';
 import { ReactNode, useState } from 'react';
-import './FilterDrawer.scss';
+import styles from './FilterDrawer.module.scss';
 
 interface FilterDrawerProps {
   children: ReactNode;
@@ -13,12 +13,12 @@ export default function FilterDrawer({ children, className }: FilterDrawerProps)
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className={['filter-drawer', className ?? ''].join(' ')}>
+    <div className={className}>
       <IconButton onClick={() => setOpen(true)}>
         <FilterAltIcon />
       </IconButton>
       <Drawer anchor="bottom" open={open} onClose={() => setOpen(false)}>
-        <div className="drawer-body">
+        <div className={styles.drawerBody}>
           <h2>Filters</h2>
           {children}
         </div>

@@ -1,4 +1,4 @@
-.objects-table {
+.objectsTable {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -13,15 +13,11 @@
   width: 15rem;
 }
 
-.table-row:hover {
-  cursor: pointer;
-}
-
 .drawer {
   margin-left: 1rem;
 }
 
-.action-key-container {
+.actionKeyContainer {
   display: flex;
   justify-content: space-between;
 }

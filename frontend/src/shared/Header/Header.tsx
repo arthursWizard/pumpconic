@@ -1,11 +1,11 @@
 import { Link } from '@mui/material';
 import { Home } from '@mui/icons-material';
-import './Header.scss';
+import styles from './Header.module.scss';
 
 export default function Header() {
   return (
-    <div className="header">
-      <Link className="home" href="/">
+    <div className={styles.header}>
+      <Link className={styles.home} href="/">
         <Home></Home>
       </Link>
     </div>

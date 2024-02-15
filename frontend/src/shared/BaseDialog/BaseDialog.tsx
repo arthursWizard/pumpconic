@@ -5,7 +5,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Divider from '@mui/material/Divider';
 import { ReactNode } from 'react';
-import './BaseDialog.scss';
 
 export interface DialogActionsProps {
   open: boolean;

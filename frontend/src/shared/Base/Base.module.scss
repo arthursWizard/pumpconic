@@ -1,0 +1,18 @@
+.base {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.titleContainer {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.returnButton {
+  height: fit-content;
+}

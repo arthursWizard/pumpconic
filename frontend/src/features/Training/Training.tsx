@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import './Training.scss';
 import Base from 'shared/Base/Base';
 import Notes from 'shared/Notes/Notes';
-import ObjectsTable, { ColumnDef, EventType } from 'shared/ObjectsTable/ObjectsTable';
+import { ColumnDef, RowEventType } from 'shared/ObjectsTable/RowItem/RowItem';
+import ObjectsTable from 'shared/ObjectsTable/ObjectsTable';
 
 interface Bla {
   id: string;
@@ -24,7 +24,7 @@ const columns: ColumnDef<Bla>[] = [
 ];
 
 const rows = [
-  { id: '1', navigation: '/training/1', name: 'training 1', create_date: '20.12.2023', label: 'bla' },
+  { id: '1', navigation: '/exercise/1', name: 'exercise 1', create_date: '20.12.2023', label: 'bla' },
   { id: '2', navigation: '/training/1', name: 'training 2', create_date: '20.12.2023', label: 'bla' },
   { id: '3', navigation: '/training/1', name: 'training 3', create_date: '20.12.2023', label: 'bla' },
   { id: '4', navigation: '/training/1', name: 'training 4', create_date: '20.12.2023', label: 'bla' },
@@ -46,10 +46,10 @@ export default function Training() {
   const navigate = useNavigate();
 
   // TODO: Implement all cases
-  const handleOnAction = (id: string, eventType: EventType) => {
+  const handleOnAction = (id: string, eventType: RowEventType) => {
     switch (eventType) {
       case 'navigate':
-        navigate(`/training/${id}`);
+        navigate(`/exercise/${id}`);
         break;
       case 'edit':
       case 'delete':
@@ -58,7 +58,7 @@ export default function Training() {
   };
 
   return (
-    <Base title="Training name">
+    <Base title="Training name" hasBackNavigation>
       <Notes>
         <div>Some Text and stuff</div>
       </Notes>

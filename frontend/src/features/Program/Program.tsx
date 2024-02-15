@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import './Program.scss';
 import Base from 'shared/Base/Base';
 import Notes from 'shared/Notes/Notes';
-import ObjectsTable, { ColumnDef, EventType } from 'shared/ObjectsTable/ObjectsTable';
+import { ColumnDef, RowEventType } from 'shared/ObjectsTable/RowItem/RowItem';
+import ObjectsTable from 'shared/ObjectsTable/ObjectsTable';
 
 interface Bla {
   id: string;
@@ -46,7 +46,7 @@ export default function Program() {
   const navigate = useNavigate();
 
   // TODO: Implement all cases
-  const handleOnAction = (id: string, eventType: EventType) => {
+  const handleOnAction = (id: string, eventType: RowEventType) => {
     switch (eventType) {
       case 'navigate':
         navigate(`/training/${id}`);
@@ -58,7 +58,7 @@ export default function Program() {
   };
 
   return (
-    <Base title="Program name">
+    <Base title="Program name" hasBackNavigation>
       <Notes>
         <div>Some Text and stuff</div>
       </Notes>

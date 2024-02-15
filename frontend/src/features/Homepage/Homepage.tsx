@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Base from 'shared/Base/Base';
-import ObjectsTable, { ColumnDef, EventType } from 'shared/ObjectsTable/ObjectsTable';
+import ObjectsTable from 'shared/ObjectsTable/ObjectsTable';
+import { ColumnDef, RowEventType } from 'shared/ObjectsTable/RowItem/RowItem';
 import ProgramFormDialog from 'shared/ProgramFormDialog/ProgramFormDialog';
 
 interface Bla {
@@ -52,7 +53,7 @@ export default function Homepage() {
   const navigate = useNavigate();
 
   // TODO: Implement all cases
-  const handleOnAction = (id: string, eventType: EventType) => {
+  const handleOnAction = (id: string, eventType: RowEventType) => {
     switch (eventType) {
       case 'navigate':
         navigate(`/program/${id}`);
