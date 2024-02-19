@@ -32,6 +32,8 @@ interface ObjectTableProps<T> {
   rows: T[];
   columns: ColumnDef<T>[];
   hasOptionsMenu?: boolean;
+  hasStartOption?: boolean;
+  hasFilter?: boolean;
   EditFormDialog?: ComponentType<UpdateDialogProps>;
   onAction?: (id: string, eventType: RowEventType) => void;
 }
@@ -40,6 +42,8 @@ export default function ObjectsTable<T extends RowDef>({
   rows,
   columns,
   hasOptionsMenu,
+  hasStartOption,
+  hasFilter,
   EditFormDialog,
   onAction,
 }: ObjectTableProps<T>) {
@@ -50,7 +54,7 @@ export default function ObjectsTable<T extends RowDef>({
   const [displayedRows, filter, setFilter] = useRowFiltering(rows);
 
   const handleRowAction = (id: string, eventType: RowEventType) => {
-    if (eventType === 'navigate') {
+    if (eventType === 'navigate' || eventType === 'start') {
       onAction?.(id, eventType);
     } else {
       setDialog({ openDialog: eventType, id });
@@ -78,16 +82,18 @@ export default function ObjectsTable<T extends RowDef>({
 
   return (
     <div className={styles.objectsTable}>
-      <div className={styles.actionKeyContainer}>
-        <FilterDrawer className={styles.drawer}>
-          <TextField
-            className={styles.filter}
-            label="Name/Label"
-            variant="standard"
-            value={filter}
-            onChange={(event) => setFilter(event.target.value)}
-          ></TextField>
-        </FilterDrawer>
+      <div className={`${styles.actionKeyContainer} ${!hasFilter && styles.flexEnd}`}>
+        {hasFilter && (
+          <FilterDrawer className={styles.drawer}>
+            <TextField
+              className={styles.filter}
+              label="Name/Label"
+              variant="standard"
+              value={filter}
+              onChange={(event) => setFilter(event.target.value)}
+            ></TextField>
+          </FilterDrawer>
+        )}
         <Button variant="contained" onClick={() => handleOpenAddNewItemDialog()}>
           New
         </Button>
@@ -109,6 +115,7 @@ export default function ObjectsTable<T extends RowDef>({
                 row={row}
                 columns={columns}
                 hasOptionsMenu={hasOptionsMenu}
+                hasStartOption={hasStartOption}
                 onRowAction={handleRowAction}
               />
             ))}
@@ -126,3 +133,8 @@ export default function ObjectsTable<T extends RowDef>({
     </div>
   );
 }
+
+ObjectsTable.defaultProps = {
+  hasOptionsMenu: true,
+  hasFilter: true,
+};

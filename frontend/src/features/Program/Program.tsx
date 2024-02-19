@@ -3,6 +3,7 @@ import Base from 'shared/Base/Base';
 import Notes from 'shared/Notes/Notes';
 import { ColumnDef, RowEventType } from 'shared/ObjectsTable/RowItem/RowItem';
 import ObjectsTable from 'shared/ObjectsTable/ObjectsTable';
+import TrainingFormDialog from 'shared/TrainingFormDialog/TrainingFormDialog';
 
 interface Bla {
   id: string;
@@ -51,6 +52,9 @@ export default function Program() {
       case 'navigate':
         navigate(`/training/${id}`);
         break;
+      case 'start':
+        navigate(`/record/${id}`);
+        break;
       case 'edit':
       case 'delete':
         console.log(id);
@@ -63,7 +67,13 @@ export default function Program() {
         <div>Some Text and stuff</div>
       </Notes>
       <Base title="Trainings">
-        <ObjectsTable columns={columns} rows={rows} hasOptionsMenu={true} onAction={handleOnAction} />
+        <ObjectsTable
+          columns={columns}
+          rows={rows}
+          hasStartOption
+          EditFormDialog={TrainingFormDialog}
+          onAction={handleOnAction}
+        />
       </Base>
     </Base>
   );

@@ -9,6 +9,7 @@ import { darkTheme } from 'theme';
 import Program from 'features/Program/Program';
 import Training from 'features/Training/Training';
 import Exercise from 'features/Exercise/Exercise';
+import ActivityRecorder from 'features/ActivityRecorder/ActivityRecorder';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
               <Route path="/program/:programId" element={<Program />}></Route>
               <Route path="/training/:trainingId" element={<Training />}></Route>
               <Route path="/exercise/:exerciseId" element={<Exercise />}></Route>
+              <Route path="/record/:trainingId" element={<ActivityRecorder />}></Route>
             </Routes>
           </Router>
         </div>

@@ -3,6 +3,7 @@ import Base from 'shared/Base/Base';
 import Notes from 'shared/Notes/Notes';
 import { ColumnDef, RowEventType } from 'shared/ObjectsTable/RowItem/RowItem';
 import ObjectsTable from 'shared/ObjectsTable/ObjectsTable';
+import ExerciseFormDialog from 'shared/ExerciseFormDialog/ExerciseFormDialog';
 
 interface Bla {
   id: string;
@@ -63,7 +64,7 @@ export default function Training() {
         <div>Some Text and stuff</div>
       </Notes>
       <Base title="Exercises">
-        <ObjectsTable columns={columns} rows={rows} hasOptionsMenu={true} onAction={handleOnAction} />
+        <ObjectsTable columns={columns} rows={rows} EditFormDialog={ExerciseFormDialog} onAction={handleOnAction} />
       </Base>
     </Base>
   );

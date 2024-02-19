@@ -7,7 +7,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import styles from './RowItem.module.scss';
 
-export type RowDef = { id: string; navigation: string;[key: string]: string | number };
+export type RowDef = { id: string; [key: string]: string | number };
 
 type ColumnDefBase<T, K extends keyof T> = {
   name: string;
@@ -16,16 +16,23 @@ type ColumnDefBase<T, K extends keyof T> = {
 
 export type ColumnDef<T> = { [K in keyof T]-?: ColumnDefBase<T, K> }[keyof T];
 
-export type RowEventType = 'navigate' | 'edit' | 'delete';
+export type RowEventType = 'navigate' | 'edit' | 'delete' | 'start';
 
 interface RowItemProps<T> {
   row: T;
   columns: ColumnDef<T>[];
   hasOptionsMenu?: boolean;
+  hasStartOption?: boolean;
   onRowAction?: (id: string, eventType: RowEventType) => void;
 }
 
-export default function RowItem<T extends RowDef>({ row, columns, hasOptionsMenu, onRowAction }: RowItemProps<T>) {
+export default function RowItem<T extends RowDef>({
+  row,
+  columns,
+  hasOptionsMenu,
+  hasStartOption,
+  onRowAction,
+}: RowItemProps<T>) {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const menuOpen = Boolean(anchorEl);
   const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -56,6 +63,7 @@ export default function RowItem<T extends RowDef>({ row, columns, hasOptionsMenu
             <MoreVertIcon />
           </IconButton>
           <Menu id="options-menu" anchorEl={anchorEl} open={menuOpen} onClose={handleMenuClose}>
+            {hasStartOption && <MenuItem onClick={(event) => handleMenuClose(event, row.id, 'start')}>Start</MenuItem>}
             <MenuItem onClick={(event) => handleMenuClose(event, row.id, 'edit')}>Edit</MenuItem>
             <MenuItem onClick={(event) => handleMenuClose(event, row.id, 'delete')}>Delete</MenuItem>
           </Menu>

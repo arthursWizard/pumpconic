@@ -1,8 +1,5 @@
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Divider from '@mui/material/Divider';
+import ActivityCard from 'shared/ActivityCard/ActivityCard';
 import Base from 'shared/Base/Base';
 import Notes from 'shared/Notes/Notes';
 import styles from './Exercise.module.scss';
@@ -14,18 +11,8 @@ interface ActivityCardsProps {
 function ActivityCards({ activities }: ActivityCardsProps) {
   return (
     <>
-      {activities.map((c, i) => (
-        <Card key={c.id} className={styles.cardContainer}>
-          {i === 0 && <Divider />}
-          <CardHeader title={[c.date, c.alternate ?? ''].join(' - ')} />
-          <CardContent className={styles.cardContent}>
-            <span>SET 1 | 10 REPS | 25 kg</span>
-            <span>SET 1 | 10 REPS | 25 kg</span>
-            <span>SET 1 | 10 REPS | 25 kg</span>
-            <span>SET 1 | 10 REPS | 25 kg</span>
-          </CardContent>
-          <Divider />
-        </Card>
+      {activities.map((a) => (
+        <ActivityCard key={a.id} className={styles.card} {...a} />
       ))}
     </>
   );

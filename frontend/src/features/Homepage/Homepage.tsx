@@ -65,13 +65,7 @@ export default function Homepage() {
   };
   return (
     <Base title="Programs">
-      <ObjectsTable
-        columns={columns}
-        rows={rows}
-        hasOptionsMenu={true}
-        EditFormDialog={ProgramFormDialog}
-        onAction={handleOnAction}
-      />
+      <ObjectsTable columns={columns} rows={rows} EditFormDialog={ProgramFormDialog} onAction={handleOnAction} />
     </Base>
   );
 }
